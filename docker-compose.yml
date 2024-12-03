@@ -1,0 +1,18 @@
+services:
+
+  postgres:
+    image: 'postgres:17.2'
+    container_name: 'postgres'
+    ports:
+      - "5432:5432"
+    environment:
+      - 'POSTGRES_DB=userdb'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=postgres'
+
+  mailpit:
+    image: 'axllent/mailpit:v1.21.5'
+    container_name: 'mailpit'
+    ports:
+      - '1025:1025'
+      - '8025:8025'
