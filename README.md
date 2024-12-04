@@ -12,6 +12,8 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   A `Spring Boot` Java web application that provides a user interface for accessing movie information. To view the movie list, users must first register by providing a username, password, and email. Once registered, they can log in either with their username and password or by requesting a one-time token sent to their email.
 
+- ### MailPit
+
   To simulate emails being sent, we are using [`MailPit`](https://mailpit.axllent.org/), a lightweight email testing tool that captures and displays emails from your application in a web interface. It helps developers test email functionality without sending real emails.
 
 ## Prerequisites
