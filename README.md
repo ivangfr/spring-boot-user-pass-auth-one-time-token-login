@@ -1,6 +1,6 @@
 # spring-boot-one-time-token-userpass-auth
 
-The goal of this project is to create a [`Spring Boot`](https://docs.spring.io/spring-boot/index.html;) application called `movies-app` that allows users to log in using [`Username/Password Authentication`](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/index.html) and [`One-Time Token Login`](https://docs.spring.io/spring-security/reference/servlet/authentication/onetimetoken.html).
+The goal of this project is to create a [`Spring Boot`](https://docs.spring.io/spring-boot/index.html) application called `movies-app` that allows users to log in using [`Username/Password Authentication`](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/index.html) and [`One-Time Token Login`](https://docs.spring.io/spring-security/reference/servlet/authentication/onetimetoken.html).
 
 ## Proof-of-Concepts & Articles
 
@@ -11,6 +11,8 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 - ### movies-app
 
   A `Spring Boot` Java web application that provides a user interface for accessing movie information. To view the movie list, users must first register by providing a username, password, and email. Once registered, they can log in either with their username and password or by requesting a one-time token sent to their email.
+
+  To simulate emails being sent, we are using [`MailPit`](https://mailpit.axllent.org/), a lightweight email testing tool that captures and displays emails from your application in a web interface. It helps developers test email functionality without sending real emails.
 
 ## Prerequisites
 
@@ -42,17 +44,17 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 ## Demonstration
 
-### User Registration
+- ### User Registration
 
-![user-registration](documentation/user-registration.gif)
+  ![user-registration](documentation/user-registration.gif)
 
-### Username/Password Login
+- ### Username/Password Login
 
-![username-password-login](documentation/username-password-login.gif)
+  ![username-password-login](documentation/username-password-login.gif)
 
-### One-Time Token Login
+- ### One-Time Token Login
 
-![one-time-token-login](documentation/one-time-token-login.gif)
+  ![one-time-token-login](documentation/one-time-token-login.gif)
 
 ## Util Commands
 
