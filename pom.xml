@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ivanfranchin</groupId>
-    <artifactId>spring-boot-one-time-token-userpass-auth</artifactId>
+    <artifactId>spring-boot-user-pass-auth-one-time-token-login</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>spring-boot-one-time-token-userpass-auth</name>
+    <name>spring-boot-user-pass-auth-one-time-token-login</name>
     <description>Demo project for Spring Boot</description>
     <url/>
     <licenses>

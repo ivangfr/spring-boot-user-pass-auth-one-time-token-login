@@ -1,4 +1,4 @@
-# spring-boot-one-time-token-userpass-auth
+# spring-boot-user-pass-auth-one-time-token-login
 
 The goal of this project is to create a [`Spring Boot`](https://docs.spring.io/spring-boot/index.html) application called `movies-app` that allows users to log in using [`Username/Password Authentication`](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/index.html) and [`One-Time Token Login`](https://docs.spring.io/spring-security/reference/servlet/authentication/onetimetoken.html).
 
@@ -23,7 +23,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 ## Start Environment
 
-- In a terminal, navigate to `spring-boot-one-time-token-userpass-auth` root folder;
+- In a terminal, navigate to `spring-boot-user-pass-auth-one-time-token-login` root folder;
 - Run the following command to start docker compose containers:
   ```
   docker compose up -d
@@ -31,7 +31,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 ## Running movies-app using Maven
 
-- In a terminal, make sure you are in `spring-boot-one-time-token-userpass-auth/movies-app` folder;
+- In a terminal, make sure you are in `spring-boot-user-pass-auth-one-time-token-login` folder;
 - Run the following `Maven` command to start the application:
   ```
   ./mvnw clean spring-boot:run --projects movies-app
@@ -70,7 +70,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 ## Shutdown
 
 - To stop `movies-app`, go to the terminal where it's running and press `Ctrl+C`;
-- To stop and remove docker compose containers, network and volumes, go to a terminal and, inside `spring-boot-one-time-token-userpass-auth` root folder, run the command below:
+- To stop and remove docker compose containers, network and volumes, go to a terminal and, inside `spring-boot-user-pass-auth-one-time-token-login` root folder, run the command below:
   ```
   docker compose down -v
   ```

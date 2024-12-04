@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.ivanfranchin</groupId>
-        <artifactId>spring-boot-one-time-token-userpass-auth</artifactId>
+        <artifactId>spring-boot-user-pass-auth-one-time-token-login</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
