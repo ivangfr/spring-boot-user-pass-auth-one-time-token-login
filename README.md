@@ -14,7 +14,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - ### MailPit
 
-  To simulate emails being sent, we are using [`MailPit`](https://mailpit.axllent.org/), a lightweight email testing tool that captures and displays emails from your application in a web interface. It helps developers test email functionality without sending real emails.
+  We are using [`MailPit`](https://mailpit.axllent.org/). It's a lightweight email testing tool that captures and displays emails from your application in a web interface. It helps developers test email functionality without sending real emails.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 ## Start Environment
 
-- In a terminal, make sure you are inside `spring-boot-one-time-token-userpass-auth` root folder;
+- In a terminal, navigate to `spring-boot-one-time-token-userpass-auth` root folder;
 - Run the following command to start docker compose containers:
   ```
   docker compose up -d
