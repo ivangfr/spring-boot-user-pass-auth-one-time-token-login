@@ -10,7 +10,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - ### movies-app
 
-  A `Spring Boot` Java web application that provides a user interface for accessing movie information. To view the movie list, users must first register by providing a username, password, and email. Once registered, they can log in either with their username and password or by requesting a one-time token sent to their email.
+  A `Spring Boot` Java web application that provides a user interface for accessing movie information. During startup, an admin for the Movies App is created with the username `admin` and the password `admin`. Users must register by providing a username, password, and email. Once registered, both admin and users can log in either with their username and password or by requesting a one-time token sent to their email.
 
 - ### MailPit
 

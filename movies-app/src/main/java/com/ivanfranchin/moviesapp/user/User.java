@@ -24,12 +24,12 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private String role;
+    private String authority;
 
-    public User(String username, String password, String email, String role) {
+    public User(String username, String password, String email, String authority) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.role = role;
+        this.authority = authority;
     }
 }

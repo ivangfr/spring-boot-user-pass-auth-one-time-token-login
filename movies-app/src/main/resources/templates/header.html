@@ -12,8 +12,11 @@
         <a class="item" th:href="@{/}">
             Home
         </a>
-        <a class="item" th:href="@{/movies}" sec:authorize="hasRole('USER')">
+        <a class="item" th:href="@{/movies}" sec:authorize="isAuthenticated()">
             Movies
+        </a>
+        <a class="item" th:href="@{/users}" sec:authorize="hasAuthority('ADMIN')">
+            Users
         </a>
         <div class="right menu">
             <a class="ui item" th:href="@{/login}" sec:authorize="!isAuthenticated()">

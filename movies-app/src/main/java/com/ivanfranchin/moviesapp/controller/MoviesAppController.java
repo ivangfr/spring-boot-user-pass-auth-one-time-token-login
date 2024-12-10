@@ -1,7 +1,7 @@
 package com.ivanfranchin.moviesapp.controller;
 
 import com.ivanfranchin.moviesapp.user.User;
-import com.ivanfranchin.moviesapp.user.UserService;
+import com.ivanfranchin.moviesapp.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MoviesAppController {
 
-    private final UserService userService;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
@@ -35,10 +35,12 @@ public class MoviesAppController {
     public String performRegistration(Model model, @ModelAttribute RegisterUserDto registerUserDto) {
         String message;
         try {
-            User user = userService.saveUser(
-                    registerUserDto.getUsername(),
-                    passwordEncoder.encode(registerUserDto.getPassword()),
-                    registerUserDto.getEmail());
+            User user = userRepository.save(
+                    new User(
+                            registerUserDto.getUsername(),
+                            passwordEncoder.encode(registerUserDto.getPassword()),
+                            registerUserDto.getEmail(),
+                            "USER"));
             log.info("User {} registered successfully", user);
             message = "You've been registered successfully!";
         } catch (DataIntegrityViolationException e) {
@@ -60,5 +62,10 @@ public class MoviesAppController {
     @GetMapping("/movies")
     public String movies() {
         return "movies";
+    }
+
+    @GetMapping("/users")
+    public String users() {
+        return "users";
     }
 }
