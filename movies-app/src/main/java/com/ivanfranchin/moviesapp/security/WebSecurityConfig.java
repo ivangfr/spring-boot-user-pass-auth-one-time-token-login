@@ -20,12 +20,11 @@ public class WebSecurityConfig {
         return http
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers(HttpMethod.GET, "/movies").hasRole("USER")
-                        .requestMatchers(HttpMethod.GET, "/", "/login", "/register", "/check-email", "/error").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/", "/register", "/check-email", "/error").permitAll()
                         .requestMatchers(HttpMethod.POST, "/perform-registration").permitAll()
                         .anyRequest().authenticated())
-                .oneTimeTokenLogin(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults())
-                .csrf(AbstractHttpConfigurer::disable)
+                .oneTimeTokenLogin(Customizer.withDefaults())
                 .logout(logout -> logout.logoutSuccessUrl("/"))
                 .build();
     }

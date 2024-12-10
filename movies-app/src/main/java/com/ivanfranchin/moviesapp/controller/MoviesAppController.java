@@ -52,11 +52,6 @@ public class MoviesAppController {
         return "index";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
     @GetMapping("/check-email")
     public String checkEmail() {
         return "check-email";
