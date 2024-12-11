@@ -6,6 +6,10 @@ The goal of this project is to create a [`Spring Boot`](https://docs.spring.io/s
 
 On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-Concepts (PoCs) and articles. You can easily search for the technology you are interested in by using the filter. Who knows, perhaps I have already implemented a PoC or written an article about what you are looking for.
 
+## Additional Readings
+
+- \[**Medium**\] [**Spring Boot App with Username/Password Authentication and One-Time Token Login**](https://medium.com/@ivangfr/spring-boot-app-with-username-password-authentication-and-one-time-token-login-fe3da92f0cb0)
+
 ## Applications
 
 - ### movies-app
