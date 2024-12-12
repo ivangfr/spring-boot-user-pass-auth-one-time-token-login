@@ -62,7 +62,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   ![one-time-token-login](documentation/one-time-token-login.gif)
 
-  > **Note**: If the user logs out and tries to log in again using the same token, it will not work!
+  > **Note**: If the admin or user logs out and tries to log in again using the same token, it will not work!
 
 ## Util Commands
 
