@@ -17,7 +17,7 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers(HttpMethod.GET, "/users").hasAuthority("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/movies").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/movies").hasAnyAuthority("ADMIN", "USER")
                         .requestMatchers(HttpMethod.GET, "/", "/register", "/check-email", "/error").permitAll()
                         .requestMatchers(HttpMethod.POST, "/perform-registration").permitAll()
                         .anyRequest().authenticated())
