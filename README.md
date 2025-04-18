@@ -14,7 +14,13 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - ### movies-app
 
-  A `Spring Boot` Java web application that provides a user interface for accessing movie information. During startup, an admin for the Movies App is created with the username `admin` and the password `admin`. Users must register by providing a username, password, and email. Once registered, both admin and users can log in either with their username and password or by requesting a one-time token sent to their email.
+  A `Spring Boot` Java web application that provides a user interface for accessing movie information.
+  
+  During startup, an admin for the Movies App is created with the _username_ `admin` and the _password_ `admin`.
+
+  Users must register by providing a _username_, _password_, and _email_.
+
+  Once registered, both admin and users can log in either with their _username_ and _password_ or by requesting a one-time token sent to their _email_.
 
 - ### MailPit
 
@@ -28,8 +34,8 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 ## Start Environment
 
 - In a terminal, navigate to `spring-boot-user-pass-auth-one-time-token-login` root folder;
-- Run the following command to start docker compose containers:
-  ```
+- Run the following command to start Docker Compose containers:
+  ```bash
   docker compose up -d
   ```
 
@@ -37,7 +43,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - In a terminal, make sure you are in `spring-boot-user-pass-auth-one-time-token-login` folder;
 - Run the following `Maven` command to start the application:
-  ```
+  ```bash
   ./mvnw clean spring-boot:run --projects movies-app
   ```
 
@@ -67,7 +73,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 ## Util Commands
 
 - **Postgres**
-  ```
+  ```bash
   docker exec -it postgres psql -U postgres -d userdb
   \dt
   select * from users;
@@ -76,7 +82,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 ## Shutdown
 
 - To stop `movies-app`, go to the terminal where it's running and press `Ctrl+C`;
-- To stop and remove docker compose containers, network and volumes, go to a terminal and, inside `spring-boot-user-pass-auth-one-time-token-login` root folder, run the command below:
-  ```
+- To stop and remove Docker Compose containers, network and volumes, go to a terminal and, inside `spring-boot-user-pass-auth-one-time-token-login` root folder, run the command below:
+  ```bash
   docker compose down -v
   ```
