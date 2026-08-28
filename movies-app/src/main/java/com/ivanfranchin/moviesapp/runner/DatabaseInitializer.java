@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseInitializer implements CommandLineRunner {
 
-    private final UserService userService;
+  private final UserService userService;
 
-    @Override
-    public void run(String... args) {
-        if (!userService.existsByUsername("admin")) {
-            userService.registerUser("admin", "admin", "admin@moviesapp.com");
-            log.info("The Movie App admin was created.");
-        }
+  @Override
+  public void run(String... args) {
+    if (!userService.existsByUsername("admin")) {
+      userService.registerUser("admin", "admin", "admin@moviesapp.com");
+      log.info("The Movie App admin was created.");
     }
+  }
 }

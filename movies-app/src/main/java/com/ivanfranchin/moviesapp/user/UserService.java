@@ -9,19 +9,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+  private final UserRepository userRepository;
+  private final PasswordEncoder passwordEncoder;
 
-    public User registerUser(String username, String password, String email) {
-        User user = new User(
-                username,
-                passwordEncoder.encode(password),
-                email,
-                Authorities.USER);
-        return userRepository.save(user);
-    }
+  public User registerUser(String username, String password, String email) {
+    User user = new User(username, passwordEncoder.encode(password), email, Authorities.USER);
+    return userRepository.save(user);
+  }
 
-    public boolean existsByUsername(String username) {
-        return userRepository.findByUsername(username).isPresent();
-    }
+  public boolean existsByUsername(String username) {
+    return userRepository.findByUsername(username).isPresent();
+  }
 }

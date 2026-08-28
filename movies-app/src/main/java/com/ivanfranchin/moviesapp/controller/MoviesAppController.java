@@ -16,52 +16,51 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MoviesAppController {
 
-    private final UserService userService;
+  private final UserService userService;
 
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
+  @GetMapping("/")
+  public String index() {
+    return "index";
+  }
 
-    @GetMapping("/register")
-    public String register(Model model) {
-        model.addAttribute("registerUserDto", new RegisterUserDto());
-        return "register";
-    }
+  @GetMapping("/register")
+  public String register(Model model) {
+    model.addAttribute("registerUserDto", new RegisterUserDto());
+    return "register";
+  }
 
-    @PostMapping("/perform-registration")
-    public String performRegistration(Model model, @Valid @ModelAttribute RegisterUserDto registerUserDto) {
-        String message;
-        try {
-            userService.registerUser(
-                    registerUserDto.getUsername(),
-                    registerUserDto.getPassword(),
-                    registerUserDto.getEmail());
-            log.info("User {} registered successfully", registerUserDto.getUsername());
-            message = "You've been registered successfully!";
-        } catch (DataIntegrityViolationException e) {
-            log.error("An error occurred while registering user {}", registerUserDto, e);
-            message = "The username or email informed already exist!";
-        } catch (Exception e) {
-            log.error("An error occurred while registering user {}", registerUserDto, e);
-            message = "An error occurred during registration!";
-        }
-        model.addAttribute("response", message);
-        return "index";
+  @PostMapping("/perform-registration")
+  public String performRegistration(
+      Model model, @Valid @ModelAttribute RegisterUserDto registerUserDto) {
+    String message;
+    try {
+      userService.registerUser(
+          registerUserDto.getUsername(), registerUserDto.getPassword(), registerUserDto.getEmail());
+      log.info("User {} registered successfully", registerUserDto.getUsername());
+      message = "You've been registered successfully!";
+    } catch (DataIntegrityViolationException e) {
+      log.error("An error occurred while registering user {}", registerUserDto, e);
+      message = "The username or email informed already exist!";
+    } catch (Exception e) {
+      log.error("An error occurred while registering user {}", registerUserDto, e);
+      message = "An error occurred during registration!";
     }
+    model.addAttribute("response", message);
+    return "index";
+  }
 
-    @GetMapping("/check-email")
-    public String checkEmail() {
-        return "check-email";
-    }
+  @GetMapping("/check-email")
+  public String checkEmail() {
+    return "check-email";
+  }
 
-    @GetMapping("/movies")
-    public String movies() {
-        return "movies";
-    }
+  @GetMapping("/movies")
+  public String movies() {
+    return "movies";
+  }
 
-    @GetMapping("/users")
-    public String users() {
-        return "users";
-    }
+  @GetMapping("/users")
+  public String users() {
+    return "users";
+  }
 }

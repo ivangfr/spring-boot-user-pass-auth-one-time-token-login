@@ -16,25 +16,28 @@ import lombok.Setter;
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "users", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "username"),
-        @UniqueConstraint(columnNames = "email")
-})
+@Table(
+    name = "users",
+    uniqueConstraints = {
+      @UniqueConstraint(columnNames = "username"),
+      @UniqueConstraint(columnNames = "email")
+    })
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
-    private Long id;
-    private String username;
-    private String password;
-    private String email;
-    private String authority;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @EqualsAndHashCode.Include
+  private Long id;
 
-    public User(String username, String password, String email, String authority) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.authority = authority;
-    }
+  private String username;
+  private String password;
+  private String email;
+  private String authority;
+
+  public User(String username, String password, String email, String authority) {
+    this.username = username;
+    this.password = password;
+    this.email = email;
+    this.authority = authority;
+  }
 }

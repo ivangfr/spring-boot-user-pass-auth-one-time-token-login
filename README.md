@@ -132,6 +132,22 @@ In a terminal, make sure you are inside the `spring-boot-user-pass-auth-one-time
 ./mvnw clean test --projects movies-app
 ```
 
+## Code Formatting
+
+This project enforces consistent Java formatting using the [Spotless](https://github.com/diffplug/spotless/tree/main/plugin-maven) Maven plugin with [google-java-format](https://github.com/google/google-java-format) (GOOGLE style).
+
+- **Check formatting**:
+  ```bash
+  ./mvnw spotless:check
+  ```
+
+- **Auto-fix formatting**:
+  ```bash
+  ./mvnw spotless:apply
+  ```
+
+Formatting is enforced automatically during `./mvnw test`.
+
 ## Support
 
 If you find this useful, consider buying me a coffee:

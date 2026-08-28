@@ -12,23 +12,29 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-    @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) {
-        return http
-                .authorizeHttpRequests(requests -> requests
-                        .requestMatchers(HttpMethod.GET, "/users").hasAuthority(Authorities.ADMIN)
-                        .requestMatchers(HttpMethod.GET, "/movies").hasAnyAuthority(Authorities.ADMIN, Authorities.USER)
-                        .requestMatchers(HttpMethod.GET, "/", "/register", "/check-email", "/error").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/perform-registration").permitAll()
-                        .anyRequest().authenticated())
-                .formLogin(Customizer.withDefaults())
-                .oneTimeTokenLogin(Customizer.withDefaults())
-                .logout(logout -> logout.logoutSuccessUrl("/"))
-                .build();
-    }
+  @Bean
+  SecurityFilterChain securityFilterChain(HttpSecurity http) {
+    return http.authorizeHttpRequests(
+            requests ->
+                requests
+                    .requestMatchers(HttpMethod.GET, "/users")
+                    .hasAuthority(Authorities.ADMIN)
+                    .requestMatchers(HttpMethod.GET, "/movies")
+                    .hasAnyAuthority(Authorities.ADMIN, Authorities.USER)
+                    .requestMatchers(HttpMethod.GET, "/", "/register", "/check-email", "/error")
+                    .permitAll()
+                    .requestMatchers(HttpMethod.POST, "/perform-registration")
+                    .permitAll()
+                    .anyRequest()
+                    .authenticated())
+        .formLogin(Customizer.withDefaults())
+        .oneTimeTokenLogin(Customizer.withDefaults())
+        .logout(logout -> logout.logoutSuccessUrl("/"))
+        .build();
+  }
 
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
+  @Bean
+  PasswordEncoder passwordEncoder() {
+    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+  }
 }
