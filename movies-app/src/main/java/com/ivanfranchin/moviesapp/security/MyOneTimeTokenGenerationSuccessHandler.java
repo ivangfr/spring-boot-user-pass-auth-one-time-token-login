@@ -4,6 +4,7 @@ import com.ivanfranchin.moviesapp.email.EmailService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.ott.OneTimeToken;
 import org.springframework.security.web.authentication.ott.OneTimeTokenGenerationSuccessHandler;
 import org.springframework.security.web.util.UrlUtils;
@@ -12,6 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
 
+@Slf4j
 @RequiredArgsConstructor
 @Component
 public class MyOneTimeTokenGenerationSuccessHandler implements OneTimeTokenGenerationSuccessHandler {
@@ -36,6 +38,7 @@ public class MyOneTimeTokenGenerationSuccessHandler implements OneTimeTokenGener
 
             response.sendRedirect("/check-email");
         } catch (Exception e) {
+            log.error("Failed to process one-time token for user {}", oneTimeToken.getUsername(), e);
             response.sendRedirect("/login?error");
         }
     }

@@ -1,7 +1,9 @@
 package com.ivanfranchin.moviesapp.controller;
 
+import com.ivanfranchin.moviesapp.security.Authorities;
 import com.ivanfranchin.moviesapp.user.User;
 import com.ivanfranchin.moviesapp.user.UserRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -32,7 +34,7 @@ public class MoviesAppController {
     }
 
     @PostMapping("/perform-registration")
-    public String performRegistration(Model model, @ModelAttribute RegisterUserDto registerUserDto) {
+    public String performRegistration(Model model, @Valid @ModelAttribute RegisterUserDto registerUserDto) {
         String message;
         try {
             User user = userRepository.save(
@@ -40,8 +42,8 @@ public class MoviesAppController {
                             registerUserDto.getUsername(),
                             passwordEncoder.encode(registerUserDto.getPassword()),
                             registerUserDto.getEmail(),
-                            "USER"));
-            log.info("User {} registered successfully", user);
+                            Authorities.USER));
+            log.info("User {} registered successfully", user.getUsername());
             message = "You've been registered successfully!";
         } catch (DataIntegrityViolationException e) {
             log.error("An error occurred while registering user {}", registerUserDto, e);

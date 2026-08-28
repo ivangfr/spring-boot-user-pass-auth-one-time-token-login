@@ -16,8 +16,8 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) {
         return http
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers(HttpMethod.GET, "/users").hasAuthority("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/movies").hasAnyAuthority("ADMIN", "USER")
+                        .requestMatchers(HttpMethod.GET, "/users").hasAuthority(Authorities.ADMIN)
+                        .requestMatchers(HttpMethod.GET, "/movies").hasAnyAuthority(Authorities.ADMIN, Authorities.USER)
                         .requestMatchers(HttpMethod.GET, "/", "/register", "/check-email", "/error").permitAll()
                         .requestMatchers(HttpMethod.POST, "/perform-registration").permitAll()
                         .anyRequest().authenticated())

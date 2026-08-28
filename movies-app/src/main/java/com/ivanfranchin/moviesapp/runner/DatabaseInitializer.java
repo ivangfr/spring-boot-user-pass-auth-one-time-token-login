@@ -1,5 +1,6 @@
 package com.ivanfranchin.moviesapp.runner;
 
+import com.ivanfranchin.moviesapp.security.Authorities;
 import com.ivanfranchin.moviesapp.user.User;
 import com.ivanfranchin.moviesapp.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class DatabaseInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) {
         if (userRepository.count() == 0) {
-            User admin = new User("admin", passwordEncoder.encode("admin"), "admin@moviesapp.com", "ADMIN");
+            User admin = new User("admin", passwordEncoder.encode("admin"), "admin@moviesapp.com", Authorities.ADMIN);
             userRepository.save(admin);
             log.info("The Movie App admin was created.");
         }
