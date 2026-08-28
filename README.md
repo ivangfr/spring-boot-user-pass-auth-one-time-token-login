@@ -125,6 +125,13 @@ flowchart LR
   docker compose down -v
   ```
 
+## Running Tests
+
+In a terminal, make sure you are inside the `spring-boot-user-pass-auth-one-time-token-login` root folder, and run the following command:
+```bash
+./mvnw clean test --projects movies-app
+```
+
 ## Support
 
 If you find this useful, consider buying me a coffee:

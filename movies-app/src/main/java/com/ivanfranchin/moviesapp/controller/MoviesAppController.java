@@ -1,13 +1,10 @@
 package com.ivanfranchin.moviesapp.controller;
 
-import com.ivanfranchin.moviesapp.security.Authorities;
-import com.ivanfranchin.moviesapp.user.User;
-import com.ivanfranchin.moviesapp.user.UserRepository;
+import com.ivanfranchin.moviesapp.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MoviesAppController {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final UserService userService;
 
     @GetMapping("/")
     public String index() {
@@ -37,13 +33,11 @@ public class MoviesAppController {
     public String performRegistration(Model model, @Valid @ModelAttribute RegisterUserDto registerUserDto) {
         String message;
         try {
-            User user = userRepository.save(
-                    new User(
-                            registerUserDto.getUsername(),
-                            passwordEncoder.encode(registerUserDto.getPassword()),
-                            registerUserDto.getEmail(),
-                            Authorities.USER));
-            log.info("User {} registered successfully", user.getUsername());
+            userService.registerUser(
+                    registerUserDto.getUsername(),
+                    registerUserDto.getPassword(),
+                    registerUserDto.getEmail());
+            log.info("User {} registered successfully", registerUserDto.getUsername());
             message = "You've been registered successfully!";
         } catch (DataIntegrityViolationException e) {
             log.error("An error occurred while registering user {}", registerUserDto, e);

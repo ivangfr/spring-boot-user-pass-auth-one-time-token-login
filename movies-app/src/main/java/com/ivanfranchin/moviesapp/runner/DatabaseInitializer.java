@@ -1,12 +1,9 @@
 package com.ivanfranchin.moviesapp.runner;
 
-import com.ivanfranchin.moviesapp.security.Authorities;
-import com.ivanfranchin.moviesapp.user.User;
-import com.ivanfranchin.moviesapp.user.UserRepository;
+import com.ivanfranchin.moviesapp.user.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -14,14 +11,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseInitializer implements CommandLineRunner {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final UserService userService;
 
     @Override
     public void run(String... args) {
-        if (userRepository.count() == 0) {
-            User admin = new User("admin", passwordEncoder.encode("admin"), "admin@moviesapp.com", Authorities.ADMIN);
-            userRepository.save(admin);
+        if (!userService.existsByUsername("admin")) {
+            userService.registerUser("admin", "admin", "admin@moviesapp.com");
             log.info("The Movie App admin was created.");
         }
     }
