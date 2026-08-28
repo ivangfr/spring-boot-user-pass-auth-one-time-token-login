@@ -1,5 +1,8 @@
 # spring-boot-user-pass-auth-one-time-token-login
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-ivan.franchin-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/ivan.franchin)
+
 The goal of this project is to create a [`Spring Boot`](https://docs.spring.io/spring-boot/index.html) application called `movies-app` that allows users to log in using [`Username/Password Authentication`](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/index.html) and [`One-Time Token Login`](https://docs.spring.io/spring-security/reference/servlet/authentication/onetimetoken.html).
 
 ## Proof-of-Concepts & Articles
@@ -9,6 +12,41 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 ## Additional Readings
 
 - \[**Medium**\] [**Spring Boot App with Username/Password Authentication and One-Time Token Login**](https://medium.com/@ivangfr/spring-boot-app-with-username-password-authentication-and-one-time-token-login-fe3da92f0cb0)
+
+## Project Overview
+
+```mermaid
+flowchart LR
+    subgraph users ["Users"]
+        Browser["Browser"]
+    end
+
+    subgraph movies-app ["movies-app\n(Spring Boot)"]
+        RestCtrl["MoviesAppController\n/ (index)\n/register\n/check-email\n/movies\n/users"]
+        Security["SecurityConfig\n(formLogin + oneTimeTokenLogin)"]
+        EmailService["EmailService\n(JavaMailSender)"]
+        UserRepository["UserRepository\n(JPA)"]
+    end
+
+    subgraph postgres ["PostgreSQL"]
+        db[("userdb\nusers table")]
+    end
+
+    subgraph mailpit ["MailPit"]
+        SMTPServer["SMTP Server\n(port 1025)"]
+        WebUI["MailPit Web UI\n(http://localhost:8025)"]
+    end
+
+    Browser -->|"HTTP\n(GET/POST)"| RestCtrl
+    RestCtrl -->|"queries"| UserRepository
+    RestCtrl -->|"validates credentials"| Security
+    Security -->|"authenticates"| UserRepository
+    UserRepository -->|"JDBC queries"| db
+    Security -->|"generates OTT"| EmailService
+    EmailService -->|"sends email\n(SMTP)"| SMTPServer
+    SMTPServer -->|"captures emails"| WebUI
+    Browser -->|"views emails"| WebUI
+```
 
 ## Applications
 
@@ -20,11 +58,11 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   Users must register by providing a _username_, _password_, and _email_.
 
-  Once registered, both admin and users can log in either with their _username_ and _password_ or by requesting a one-time token sent to their _email_.
+  Once registered, both admins and users can log in either with their _username_ and _password_ or by requesting a one-time token sent to their _email_.
 
 - ### MailPit
 
-  We are using [`MailPit`](https://mailpit.axllent.org/). It's a lightweight email testing tool that captures and displays emails from your application in a web interface. It helps developers test email functionality without sending real emails.
+  The application uses [`MailPit`](https://mailpit.axllent.org/). It's a lightweight email testing tool that captures and displays emails from your application in a web interface. It helps developers test email functionality without sending real emails.
 
 ## Prerequisites
 
@@ -82,7 +120,17 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 ## Shutdown
 
 - To stop `movies-app`, go to the terminal where it's running and press `Ctrl+C`;
-- To stop and remove Docker Compose containers, network and volumes, go to a terminal and, inside `spring-boot-user-pass-auth-one-time-token-login` root folder, run the command below:
+- To stop and remove Docker Compose containers, network, and volumes, go to a terminal and, inside `spring-boot-user-pass-auth-one-time-token-login` root folder, run the command below:
   ```bash
   docker compose down -v
   ```
+
+## Support
+
+If you find this useful, consider buying me a coffee:
+
+<a href="https://buymeacoffee.com/ivan.franchin"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50"></a>
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).
