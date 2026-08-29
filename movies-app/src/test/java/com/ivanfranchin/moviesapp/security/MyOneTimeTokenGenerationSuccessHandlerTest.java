@@ -3,6 +3,7 @@ package com.ivanfranchin.moviesapp.security;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
@@ -79,7 +80,7 @@ class MyOneTimeTokenGenerationSuccessHandlerTest {
   }
 
   private HttpServletRequest createMockRequest(String requestUrl) {
-    HttpServletRequest request = org.mockito.Mockito.mock(HttpServletRequest.class);
+    HttpServletRequest request = mock(HttpServletRequest.class);
     given(request.getContextPath()).willReturn("");
     given(request.getServerName()).willReturn("localhost");
     given(request.getServerPort()).willReturn(8025);
@@ -89,6 +90,6 @@ class MyOneTimeTokenGenerationSuccessHandlerTest {
   }
 
   private HttpServletResponse createMockResponse() {
-    return org.mockito.Mockito.mock(HttpServletResponse.class);
+    return mock(HttpServletResponse.class);
   }
 }

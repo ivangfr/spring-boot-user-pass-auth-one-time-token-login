@@ -148,6 +148,10 @@ This project enforces consistent Java formatting using the [Spotless](https://gi
 
 Formatting is enforced automatically during `./mvnw test`.
 
+## How to optimize the GIF in the documentation folder
+
+\[**Medium**\]: [**How I Reduce GIF and Screenshot Sizes for My Technical Articles on macOS**](https://medium.com/itnext/how-i-reduce-gif-and-screenshot-sizes-for-my-technical-articles-on-macos-7fea331afc68)
+
 ## Support
 
 If you find this useful, consider buying me a coffee:
