@@ -12,6 +12,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 ## Additional Readings
 
 - \[**Medium**\] [**Spring Boot App with Username/Password Authentication and One-Time Token Login**](https://medium.com/@ivangfr/spring-boot-app-with-username-password-authentication-and-one-time-token-login-fe3da92f0cb0)
+- \[**Medium**\] [**Spring Security One-Time Token Login Explained**](https://medium.com/@ivangfr/spring-security-one-time-token-login-explained-110a8da53c90)
 
 ## Project Overview
 
